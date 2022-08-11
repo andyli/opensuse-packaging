@@ -22,6 +22,8 @@ devcontainer-base:
         tar \
         git \
         jq \
+        vim \
+        vim-data \
         sudo \
         socat \
         docker \
@@ -30,7 +32,7 @@ devcontainer-base:
         bash-completion
 
     RUN zypper ar -r http://download.opensuse.org/repositories/openSUSE:/Tools/$OPENSUSE_VERSION/openSUSE:Tools.repo
-    RUN zypper --non-interactive --gpg-auto-import-keys in osc
+    RUN zypper --non-interactive --gpg-auto-import-keys in osc build rpmdevtools
 
     # create user
     RUN groupadd --gid $USER_GID $USERNAME \
