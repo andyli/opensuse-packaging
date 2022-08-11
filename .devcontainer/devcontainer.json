@@ -1,0 +1,16 @@
+{
+	"name": "opensuse-packaging",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "workspace",
+	"workspaceFolder": "/workspace",
+	"remoteEnv": {
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+	},
+	"settings": {},
+	"extensions": [
+		"ms-azuretools.vscode-docker",
+		"earthly.earthfile-syntax-highlighting",
+		"1dot75cm.RPMSpec"
+	],
+	"remoteUser": "vscode"
+}
