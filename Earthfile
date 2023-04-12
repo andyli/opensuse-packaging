@@ -32,7 +32,7 @@ devcontainer-base:
         bash-completion
 
     RUN zypper ar -r http://download.opensuse.org/repositories/openSUSE:/Tools/$OPENSUSE_VERSION/openSUSE:Tools.repo
-    RUN zypper --non-interactive --gpg-auto-import-keys in osc build rpmdevtools
+    RUN zypper --non-interactive --gpg-auto-import-keys in osc build rpmdevtools rpmbuild
 
     # create user
     RUN groupadd --gid $USER_GID $USERNAME \
