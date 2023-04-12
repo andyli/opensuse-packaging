@@ -14,7 +14,10 @@ A VSCode devcontainer setup for openSUSE packaging.
     - Update `Version:`
     - Update the other build deps/rules if needed.
 
-5. `rpmdev-spectool -g haxe.spec`
+5. Update source archives
+    - Download archives `rpmdev-spectool -g haxe.spec`
+    - Remove old archives
+    - `osc addremove`
 
 6. Edit changelog by `osc vc`
 
