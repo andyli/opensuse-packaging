@@ -1,13 +1,11 @@
-VERSION 0.6
-ARG OPENSUSE_VERSION=15.4
+VERSION 0.7
+ARG --global OPENSUSE_VERSION=15.5
 FROM opensuse/leap:$OPENSUSE_VERSION
-ARG DEVCONTAINER_IMAGE_NAME_DEFAULT=ghcr.io/andyli/opensuse_packaging_devcontainer
+ARG --global DEVCONTAINER_IMAGE_NAME_DEFAULT=ghcr.io/andyli/opensuse_packaging_devcontainer
 
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
-ARG TARGETARCH
+ARG --global USERNAME=vscode
+ARG --global USER_UID=1000
+ARG --global USER_GID=$USER_UID
 
 devcontainer-base:
     RUN zypper --non-interactive in \
@@ -43,7 +41,7 @@ devcontainer-base:
 
     # Setting the ENTRYPOINT to docker-init.sh will configure non-root access 
     # to the Docker socket. The script will also execute CMD as needed.
-    COPY .devcontainer/docker-init.sh /usr/local/share/
+    COPY --chmod 755 .devcontainer/docker-init.sh /usr/local/share/
     ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
     CMD [ "sleep", "infinity" ]
 
@@ -55,6 +53,7 @@ devcontainer-base:
 # RUN earthly bootstrap --no-buildkit --with-autocomplete
 earthly:
     FROM +devcontainer-base
+    ARG TARGETARCH
     RUN curl -fsSL https://github.com/earthly/earthly/releases/download/v0.7.2/earthly-linux-${TARGETARCH} -o /usr/local/bin/earthly \
         && chmod +x /usr/local/bin/earthly
     SAVE ARTIFACT /usr/local/bin/earthly
