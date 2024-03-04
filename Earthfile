@@ -54,7 +54,7 @@ devcontainer-base:
 earthly:
     FROM +devcontainer-base
     ARG TARGETARCH
-    RUN curl -fsSL https://github.com/earthly/earthly/releases/download/v0.7.2/earthly-linux-${TARGETARCH} -o /usr/local/bin/earthly \
+    RUN curl -fsSL https://github.com/earthly/earthly/releases/download/v0.8.4/earthly-linux-${TARGETARCH} -o /usr/local/bin/earthly \
         && chmod +x /usr/local/bin/earthly
     SAVE ARTIFACT /usr/local/bin/earthly
 
