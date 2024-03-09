@@ -6,11 +6,14 @@
 	"remoteEnv": {
 		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
 	},
-	"settings": {},
-	"extensions": [
-		"ms-azuretools.vscode-docker",
-		"earthly.earthfile-syntax-highlighting",
-		"1dot75cm.RPMSpec"
-	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"earthly.earthfile-syntax-highlighting",
+				"1dot75cm.RPMSpec"
+			]
+		}
+	},
 	"remoteUser": "vscode"
 }
